@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "C/C++: g++.exe build active file",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}\\${fileBasenameNoExtension}.exe"
+      ],
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Build C++ file using g++"
+    },
+    {
+      "label": "Run with input/output redirection",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "${fileDirname}\\${fileBasenameNoExtension}.exe < input.txt > output.txt"
+      ],
+      "dependsOn": "C/C++: g++.exe build active file",
+      "group": "test",
+      "problemMatcher": [],
+      "detail": "Run program using input.txt and write to output.txt"
+    }
+  ]
+}
